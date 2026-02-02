@@ -62,7 +62,7 @@ function startMousePressed() {
 
   // If START is clicked, go to the game screen
   if (isHover(startBtn)) {
-    currentScreen = "game";
+    currentScreen = "scene1";
   }
   // If INSTRUCTIONS is clicked, go to the instructions screen
   else if (isHover(instrBtn)) {
