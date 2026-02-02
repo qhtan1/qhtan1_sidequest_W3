@@ -1,6 +1,6 @@
 function drawScene4B() {
-  drawHUD();
   background(8, 8, 10);
+  drawHUD();
 
   fill(230);
   textAlign(CENTER, CENTER);
@@ -15,26 +15,24 @@ function drawScene4B() {
     290,
   );
 
-  const backBtn = { x: width / 2, y: 520, w: 320, h: 60 };
+  const endBtn = { x: width / 2, y: 520, w: 360, h: 60 };
 
   rectMode(CENTER);
   noStroke();
-  fill(isHover(backBtn) ? 200 : 160);
-  rect(backBtn.x, backBtn.y, backBtn.w, backBtn.h, 10);
+  fill(isHover(endBtn) ? 200 : 160);
+  rect(endBtn.x, endBtn.y, endBtn.w, endBtn.h, 10);
 
   fill(30);
   textSize(18);
-  text("Back to Start (temp)", backBtn.x, backBtn.y);
+  text("Hold your breath", endBtn.x, endBtn.y);
 
-  cursor(isHover(backBtn) ? HAND : ARROW);
+  cursor(isHover(endBtn) ? HAND : ARROW);
 }
 
 function scene4BMousePressed() {
-  const backBtn = { x: width / 2, y: 520, w: 320, h: 60 };
-  if (isHover(backBtn)) {
-    currentScreen = "start";
-  }
-  if (isHover(backBtn)) {
+  const endBtn = { x: width / 2, y: 520, w: 360, h: 60 };
+
+  if (isHover(endBtn)) {
     player.sanity += 10;
     goToEndingBySanity();
   }
