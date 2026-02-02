@@ -1,6 +1,6 @@
 function drawScene3() {
-  drawHUD();
   background(10, 10, 14);
+  drawHUD();
 
   fill(230);
   textAlign(CENTER, CENTER);

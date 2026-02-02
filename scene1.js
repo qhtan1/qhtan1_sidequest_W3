@@ -3,12 +3,9 @@
 // Commit 2: minimal first story scene
 // Purpose: verify routing from start -> scene1
 // ------------------------------------------------------------
-
 function drawScene1() {
+  background(20, 20, 24);
   drawHUD();
-  textSize(14);
-  fill(255, 80, 80);
-  text("DEBUG: scene1 updated", 20, 20);
 
   background(20, 20, 24);
 
@@ -49,11 +46,6 @@ function scene1MousePressed() {
   const choiceA = { x: width / 2, y: 460, w: 520, h: 64 };
   const choiceB = { x: width / 2, y: 550, w: 520, h: 64 };
 
-  if (isHover(choiceA)) {
-    currentScreen = "scene2A";
-  } else if (isHover(choiceB)) {
-    currentScreen = "scene2B";
-  }
   if (isHover(choiceA)) {
     player.sanity -= 10;
     currentScreen = "scene2A";
