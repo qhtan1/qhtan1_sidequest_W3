@@ -47,13 +47,17 @@ function draw() {
   //   game.js          → drawGame()
   //   win.js           → drawWin()
   //   lose.js          → drawLose()
-
+  if (frameCount % 30 === 0) console.log("screen:", currentScreen);
   if (currentScreen === "start") {
     drawStart();
   } else if (currentScreen === "instr") {
     drawInstr();
   } else if (currentScreen === "scene1") {
     drawScene1();
+  } else if (currentScreen === "scene2A") {
+    drawScene2A();
+  } else if (currentScreen === "scene2B") {
+    drawScene2B();
   }
 
   // (Optional teaching note)
@@ -81,6 +85,10 @@ function mousePressed() {
     instrMousePressed();
   } else if (currentScreen === "scene1") {
     scene1MousePressed();
+  } else if (currentScreen === "scene2A") {
+    scene2AMousePressed();
+  } else if (currentScreen === "scene2B") {
+    scene2BMousePressed();
   }
 }
 
