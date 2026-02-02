@@ -7,7 +7,7 @@ function drawScene1() {
   background(20, 20, 24);
   drawHUD();
 
-  background(20, 20, 24);
+  const g = getGlitchOffset();
 
   fill(230);
   textAlign(CENTER, CENTER);
@@ -34,10 +34,10 @@ function drawScene1() {
   fill(isHover(choiceB) ? 200 : 160);
   rect(choiceB.x, choiceB.y, choiceB.w, choiceB.h, 10);
 
-  fill(30);
+  fill(30, getGlitchAlpha());
   textSize(18);
-  text("Look at the mirror", choiceA.x, choiceA.y);
-  text("Ignore it and step back", choiceB.x, choiceB.y);
+  text("Look at the mirror", choiceA.x + g.x, choiceA.y + g.y);
+  text("Ignore it and step back", choiceB.x + g.x, choiceB.y + g.y);
 
   cursor(isHover(choiceA) || isHover(choiceB) ? HAND : ARROW);
 }

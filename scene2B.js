@@ -1,6 +1,7 @@
 function drawScene2B() {
-  background(14, 14, 18);
   drawHUD();
+  background(14, 14, 18);
+
   fill(230);
   textAlign(CENTER, CENTER);
   textSize(30);

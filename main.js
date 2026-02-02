@@ -39,18 +39,53 @@ function clampSanity() {
   player.sanity = constrain(player.sanity, 0, 100);
 }
 
+// ------------------------------
+// "Out of Sync" glitch helpers
+// ------------------------------
+
+// Returns a small (x,y) offset based on sanity.
+// Only glitches when sanity < 30.
+function getGlitchOffset() {
+  clampSanity();
+
+  if (player.sanity >= 30) return { x: 0, y: 0 };
+
+  // strength grows as sanity drops
+  // sanity 29..0 maps to strength ~1..6
+  const strength = map(player.sanity, 29, 0, 1, 6);
+
+  // occasional "desync frame" (small jump)
+  const jump = random() < 0.08 ? strength : 0;
+
+  return {
+    x: floor(random(-strength, strength + 1) + (random() < 0.5 ? jump : 0)),
+    y: floor(random(-strength, strength + 1) + (random() < 0.5 ? jump : 0)),
+  };
+}
+
+// For text only: sometimes flicker transparency a bit when low sanity
+function getGlitchAlpha() {
+  clampSanity();
+
+  if (player.sanity >= 30) return 255;
+
+  // Slight flicker: mostly normal, sometimes dim
+  return random() < 0.1 ? 160 : 255;
+}
+
 function drawHUD() {
   clampSanity();
+  const g = getGlitchOffset();
 
   rectMode(CORNER);
   noStroke();
   fill(0, 0, 0, 140);
   rect(18, 18, 170, 46, 10);
 
-  fill(255);
+  fill(255, getGlitchAlpha());
   textAlign(LEFT, CENTER);
   textSize(16);
-  text(`SANITY: ${player.sanity}`, 32, 41);
+  text(`SANITY: ${player.sanity}`, 32 + g.x, 41 + g.y);
 }
 
 function goToEndingBySanity() {

@@ -2,6 +2,8 @@ function drawScene3() {
   background(10, 10, 14);
   drawHUD();
 
+  const g = getGlitchOffset();
+
   fill(230);
   textAlign(CENTER, CENTER);
   textSize(30);
@@ -27,10 +29,10 @@ function drawScene3() {
   fill(isHover(choiceB) ? 200 : 160);
   rect(choiceB.x, choiceB.y, choiceB.w, choiceB.h, 10);
 
-  fill(30);
+  fill(30, getGlitchAlpha());
   textSize(18);
-  text("Follow the whisper", choiceA.x, choiceA.y);
-  text("Lock a nearby door", choiceB.x, choiceB.y);
+  text("Follow the whisper", choiceA.x + g.x, choiceA.y + g.y);
+  text("Lock a nearby door", choiceB.x + g.x, choiceB.y + g.y);
 
   cursor(isHover(choiceA) || isHover(choiceB) ? HAND : ARROW);
 }

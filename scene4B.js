@@ -2,6 +2,8 @@ function drawScene4B() {
   background(8, 8, 10);
   drawHUD();
 
+  const g = getGlitchOffset();
+
   fill(230);
   textAlign(CENTER, CENTER);
   textSize(30);
@@ -22,9 +24,9 @@ function drawScene4B() {
   fill(isHover(endBtn) ? 200 : 160);
   rect(endBtn.x, endBtn.y, endBtn.w, endBtn.h, 10);
 
-  fill(30);
   textSize(18);
-  text("Hold your breath", endBtn.x, endBtn.y);
+  fill(30, getGlitchAlpha());
+  text("Hold your breath", endBtn.x + g.x, endBtn.y + g.y);
 
   cursor(isHover(endBtn) ? HAND : ARROW);
 }
