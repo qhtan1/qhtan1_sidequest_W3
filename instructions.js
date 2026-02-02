@@ -1,105 +1,45 @@
-// NOTE: Do NOT add setup() or draw() in this file
-// setup() and draw() live in main.js
-// This file only defines:
-// 1) drawInstr() → what the instructions screen looks like
-// 2) input handlers → how the player returns to the start screen
-// 3) helper functions specific to this screen
-
-// ------------------------------
-// Main draw function for instructions screen
-// ------------------------------
-// drawInstr() is called from main.js
-// only when currentScreen === "instr"
 function drawInstr() {
-  // Light neutral background
-  background(240);
+  background(245);
 
-  // ---- Screen title ----
-  fill(0);
-  textAlign(CENTER, TOP);
-  textSize(36);
-  text("Instructions", width / 2, 80);
+  fill(20);
+  textAlign(CENTER, CENTER);
+  textSize(54);
+  text("HELP", width / 2, 160);
 
-  // ---- Instruction text ----
+  fill(40);
   textSize(18);
+  text(
+    "How to play:\n\n" +
+      "• Click buttons to make choices.\n" +
+      "• Your SANITY changes based on what you do.\n" +
+      "• Different SANITY ranges unlock different endings.\n\n" +
+      "Controls:\n" +
+      "• Enter = Start (on title screen)\n" +
+      "• R = Restart (on ending screens)\n\n" +
+      "Press Esc or click Back to return.",
+    width / 2,
+    330,
+  );
 
-  // \n creates a line break in the text
-  // This is useful for simple multi-line instructions
-  const lines =
-    "Press the game button.\n" + "You have a chance to win or lose!";
+  const backBtn = { x: width / 2, y: 680, w: 320, h: 80 };
 
-  text(lines, width / 2, 160);
+  rectMode(CENTER);
+  noStroke();
+  fill(isHover(backBtn) ? 205 : 190);
+  rect(backBtn.x, backBtn.y, backBtn.w, backBtn.h, 16);
 
-  // ---- Back button ----
-  // This button lets the player return to the start screen
-  const backBtn = {
-    x: width / 2, // centred horizontally
-    y: 560,
-    w: 220,
-    h: 70,
-    label: "BACK",
-  };
+  fill(20);
+  textSize(28);
+  text("BACK", backBtn.x, backBtn.y);
 
-  // Draw the back button
-  drawInstrButton(backBtn);
-
-  // Change cursor when hovering over the button
   cursor(isHover(backBtn) ? HAND : ARROW);
 }
 
-// ------------------------------
-// Mouse input for instructions screen
-// ------------------------------
-// Called from main.js only when currentScreen === "instr"
 function instrMousePressed() {
-  // Button data must match the draw position
-  const backBtn = { x: width / 2, y: 560, w: 220, h: 70 };
-
-  // If the button is clicked, return to the start screen
-  if (isHover(backBtn)) {
-    currentScreen = "start";
-  }
+  const backBtn = { x: width / 2, y: 680, w: 320, h: 80 };
+  if (isHover(backBtn)) currentScreen = "start";
 }
 
-// ------------------------------
-// Keyboard input for instructions screen
-// ------------------------------
-// Provides keyboard-only navigation
 function instrKeyPressed() {
-  // ESC is a common “go back” key in games and apps
-  if (keyCode === ESCAPE) {
-    currentScreen = "start";
-  }
-
-  // B key is an additional, explicit shortcut for “back”
-  if (key === "b" || key === "B") {
-    currentScreen = "start";
-  }
-}
-
-// ------------------------------
-// Button drawing helper (instructions screen)
-// ------------------------------
-// This function is only responsible for drawing the button.
-// It is kept separate so the visual style can be changed
-// without touching input or game logic.
-function drawInstrButton({ x, y, w, h, label }) {
-  rectMode(CENTER);
-
-  // Check whether the mouse is hovering over the button
-  const hover = isHover({ x, y, w, h });
-
-  noStroke();
-
-  // Subtle colour change on hover for visual feedback
-  fill(hover ? color(200, 200, 255, 200) : color(220, 220, 255, 170));
-
-  // Draw the button shape
-  rect(x, y, w, h, 12);
-
-  // Draw the button text
-  fill(0);
-  textSize(26);
-  textAlign(CENTER, CENTER);
-  text(label, x, y);
+  if (keyCode === ESCAPE) currentScreen = "start";
 }
