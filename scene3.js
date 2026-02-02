@@ -1,4 +1,5 @@
 function drawScene3() {
+  drawHUD();
   background(10, 10, 14);
 
   fill(230);
@@ -39,6 +40,12 @@ function scene3MousePressed() {
   const choiceB = { x: width / 2, y: 560, w: 520, h: 64 };
 
   if (isHover(choiceA)) {
+    currentScreen = "scene4A";
+  } else if (isHover(choiceB)) {
+    currentScreen = "scene4B";
+  }
+  if (isHover(choiceA)) {
+    player.sanity -= 10;
     currentScreen = "scene4A";
   } else if (isHover(choiceB)) {
     currentScreen = "scene4B";

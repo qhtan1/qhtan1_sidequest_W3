@@ -62,6 +62,7 @@ function startMousePressed() {
 
   // If START is clicked, go to the game screen
   if (isHover(startBtn)) {
+    resetPlayer();
     currentScreen = "scene1";
   }
   // If INSTRUCTIONS is clicked, go to the instructions screen
@@ -78,7 +79,8 @@ function startMousePressed() {
 // - I opens instructions
 function startKeyPressed() {
   if (keyCode === ENTER) {
-    currentScreen = "game";
+    resetPlayer();
+    currentScreen = "scene1";
   }
 
   if (key === "i" || key === "I") {

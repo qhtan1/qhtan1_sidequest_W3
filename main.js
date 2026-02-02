@@ -22,11 +22,45 @@
 // We store the “name” of the current screen as a string.
 // Only one screen should be active at a time.
 let currentScreen = "start"; // "start" | "instr" | "game" | "win" | "lose"
-
 // ------------------------------
 // setup() runs ONCE at the beginning
 // ------------------------------
 // This is where you usually set canvas size and initial settings.
+// ------------------------------
+// Player stat (bonus)
+// ------------------------------
+let player = { sanity: 50 };
+
+function resetPlayer() {
+  player.sanity = 50;
+}
+
+function clampSanity() {
+  player.sanity = constrain(player.sanity, 0, 100);
+}
+
+function drawHUD() {
+  clampSanity();
+
+  rectMode(CORNER);
+  noStroke();
+  fill(0, 0, 0, 140);
+  rect(18, 18, 170, 46, 10);
+
+  fill(255);
+  textAlign(LEFT, CENTER);
+  textSize(16);
+  text(`SANITY: ${player.sanity}`, 32, 41);
+}
+
+function goToEndingBySanity() {
+  clampSanity();
+
+  if (player.sanity >= 60) currentScreen = "ending_good";
+  else if (player.sanity >= 30) currentScreen = "ending_neutral";
+  else currentScreen = "ending_bad";
+}
+
 function setup() {
   createCanvas(800, 800);
 
@@ -64,6 +98,12 @@ function draw() {
     drawScene4A();
   } else if (currentScreen === "scene4B") {
     drawScene4B();
+  } else if (currentScreen === "ending_good") {
+    drawEndingGood();
+  } else if (currentScreen === "ending_neutral") {
+    drawEndingNeutral();
+  } else if (currentScreen === "ending_bad") {
+    drawEndingBad();
   }
 
   // (Optional teaching note)
@@ -120,6 +160,16 @@ function keyPressed() {
     startKeyPressed();
   } else if (currentScreen === "instr") {
     instrKeyPressed();
+  }
+  if (key === "r" || key === "R") {
+    if (
+      currentScreen === "ending_good" ||
+      currentScreen === "ending_neutral" ||
+      currentScreen === "ending_bad"
+    ) {
+      resetPlayer();
+      currentScreen = "start";
+    }
   }
 }
 

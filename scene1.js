@@ -5,6 +5,7 @@
 // ------------------------------------------------------------
 
 function drawScene1() {
+  drawHUD();
   textSize(14);
   fill(255, 80, 80);
   text("DEBUG: scene1 updated", 20, 20);
@@ -51,6 +52,13 @@ function scene1MousePressed() {
   if (isHover(choiceA)) {
     currentScreen = "scene2A";
   } else if (isHover(choiceB)) {
+    currentScreen = "scene2B";
+  }
+  if (isHover(choiceA)) {
+    player.sanity -= 10;
+    currentScreen = "scene2A";
+  } else if (isHover(choiceB)) {
+    player.sanity += 5;
     currentScreen = "scene2B";
   }
 }

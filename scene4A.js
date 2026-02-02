@@ -1,4 +1,5 @@
 function drawScene4A() {
+  drawHUD();
   background(8, 8, 10);
 
   fill(230);
@@ -32,5 +33,9 @@ function scene4AMousePressed() {
   const backBtn = { x: width / 2, y: 520, w: 320, h: 60 };
   if (isHover(backBtn)) {
     currentScreen = "start";
+  }
+  if (isHover(backBtn)) {
+    player.sanity -= 20;
+    goToEndingBySanity();
   }
 }
