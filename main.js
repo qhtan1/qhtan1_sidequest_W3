@@ -58,6 +58,12 @@ function draw() {
     drawScene2A();
   } else if (currentScreen === "scene2B") {
     drawScene2B();
+  } else if (currentScreen === "scene3") {
+    drawScene3();
+  } else if (currentScreen === "scene4A") {
+    drawScene4A();
+  } else if (currentScreen === "scene4B") {
+    drawScene4B();
   }
 
   // (Optional teaching note)
@@ -89,6 +95,12 @@ function mousePressed() {
     scene2AMousePressed();
   } else if (currentScreen === "scene2B") {
     scene2BMousePressed();
+  } else if (currentScreen === "scene3") {
+    scene3MousePressed();
+  } else if (currentScreen === "scene4A") {
+    scene4AMousePressed();
+  } else if (currentScreen === "scene4B") {
+    scene4BMousePressed();
   }
 }
 

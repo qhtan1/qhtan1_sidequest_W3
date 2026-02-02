@@ -30,8 +30,7 @@ function drawScene2A() {
 
 function scene2AMousePressed() {
   const nextBtn = { x: width / 2, y: 520, w: 300, h: 60 };
-
   if (isHover(nextBtn)) {
-    currentScreen = "scene1";
+    currentScreen = "scene3";
   }
 }
