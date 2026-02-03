@@ -1,18 +1,28 @@
 ## Project Title
 
-GBDA302 Week 3 Example 1: Instructions Screen with Back button
+GBDA 302 — Side Quest Week 3: Interactive Story with Game States
 
 ---
 
 ## Authors
 
-Karen Cochrane and David Han
+Kiki Tan
 
 ---
 
 ## Description
 
-This p5.js project demonstrates a simple multi-screen game structure using a state-based approach. The example includes a start screen, an instructions screen with a back button, a basic game screen, and win/lose outcome screens. The focus is on showing how to separate screens into different files, route input based on the current game state, and design simple UI elements such as buttons and keyboard controls.
+This project is a small interactive horror narrative built using p5.js.  
+It extends the Week 3 starter code by introducing multiple game states, branching story paths, and a simple player state variable that affects narrative outcomes.
+
+The experience unfolds across several screens (scenes), with player choices determining how the story progresses and which ending is reached.
+
+---
+
+## Interactive Instructions
+
+- Click on the on-screen buttons to make choices and progress through the story.
+- Different choices may lead to different scenes and endings.
 
 ---
 
@@ -34,6 +44,8 @@ N/A
 
 ## GenAI
 
-The code was written by Dr. Karen Cochrane but she used GenAI to write the comments.
+GenAI tools were used for conceptual planning, coding support and debugging support.  
+All design decisions, testing, and final code integration were performed by the author.  
+A detailed process document and transcript are included with the submission.
 
 ---
